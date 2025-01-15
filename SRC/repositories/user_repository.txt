@@ -1,0 +1,12 @@
+class UserRepository:
+    def __init__(self):
+        self.users = {}  
+
+    def save(self, user_data):
+        user_id = len(self.users) + 1
+        user_data["user_id"] = user_id
+        self.users[user_id] = user_data
+        return user_data
+
+    def find_by_id(self, user_id):
+        return self.users.get(user_id, None)
