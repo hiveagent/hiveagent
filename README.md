@@ -1,5 +1,36 @@
 # HIVEAI 🐝 - Multi-Agent Collaboration Platform
 
+[![PyPI version](https://badge.fury.io/py/hiveai.svg)](https://pypi.org/project/hiveai/)
+[![Discord](https://img.shields.io/discord/123456789012345678?label=chat%20on%20Discord&logo=discord&logoColor=white)](https://discord.com/invite/E8Y5rbCC)
+[![GitHub stars](https://img.shields.io/github/stars/hiveagent/hiveagentai.svg?style=social)](https://github.com/hiveagent/hiveagentai/stargazers)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
+[![Issues](https://img.shields.io/github/issues/hiveagent/hiveagentai.svg)](https://github.com/hiveagent/hiveagentai/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/hiveagent/hiveagentai.svg)](https://github.com/hiveagent/hiveagentai/pulls)
+
+---
+
+## Table of Contents
+- [Introduction](#introduction)
+- [Key Features 🚀](#key-features-)
+- [Platform Architecture 🏗️](#platform-architecture-)
+- [🚨 Setup Instructions](#-setup-instructions)
+  - [Prerequisites](#prerequisites)
+  - [Install Dependencies](#install-dependencies-)
+  - [Running the API](#running-the-api-)
+- [📚 Available Endpoints](#-available-endpoints)
+  - [Agent Management 🤖](#agent-management-)
+  - [Collaboration Management 🤝](#collaboration-management-)
+  - [Agent Status and Progress 📊](#agent-status-and-progress-)
+- [🛠️ Example Usage](#-example-usage)
+- [🔧 Technologies Used](#-technologies-used)
+- [License 📜](#license-)
+- [💬 Support](#-support)
+
+---
+
+## Introduction
+
 Welcome to **HIVEAI**! 🧠✨ A powerful platform designed to manage and orchestrate **multiple AI agents** working together collaboratively on complex tasks. Think of it as a **smart hive** where agents combine their intelligence to achieve shared goals! 🤖💡
 
 With HIVEAI, you can:
@@ -9,31 +40,33 @@ With HIVEAI, you can:
 
 ---
 
-## Key Features 🚀:
-- **Agent Management**: Create AI agents with customizable capabilities 🤖
-- **Collaboration Projects**: Define projects where agents collaborate to achieve common goals 🧑‍🤝‍🧑
-- **Agent Assignment**: Assign agents to specific tasks within collaboration projects 🎯
-- **Collaboration Monitoring**: Track progress and performance of agents within each project 📈
+## Key Features 🚀
+- **Agent Management**: Create AI agents with customizable capabilities 🤖  
+- **Collaboration Projects**: Define projects where agents collaborate to achieve common goals 🧑‍🤝‍🧑  
+- **Agent Assignment**: Assign agents to specific tasks within collaboration projects 🎯  
+- **Collaboration Monitoring**: Track progress and performance of agents within each project 📈  
 
-## Platform Architecture 🏗️:
-- **Flask**: Lightweight Python web framework for creating the API 🌐
-- **SQLAlchemy**: ORM for managing and accessing the database 🗄️
-- **SQLite**: A simple and effective local database 🛠️
+---
+
+## Platform Architecture 🏗️
+- **Flask**: Lightweight Python web framework for creating the API 🌐  
+- **SQLAlchemy**: ORM for managing and accessing the database 🗄️  
+- **SQLite**: A simple and effective local database 🛠️  
 
 ---
 
 ## 🚨 Setup Instructions
 
 ### Prerequisites:
-- Python 3.7 or higher 🐍
+- Python 3.10 or higher 🐍
 - A virtual environment (optional but recommended) 🌱
 
 ### Install Dependencies 💻:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/HIVEAI.git
-   cd HIVEAI
+   git clone hhttps://github.com/hiveagent/hiveagentai.git
+   cd hiveagentai
    ```
 
 2. Create a virtual environment (optional but recommended):
@@ -155,7 +188,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## 💬 Support
 
-For issues, bugs, or suggestions, feel free to open an issue or contribute via a pull request on the [GitHub repository](https://github.com/hiveagent/HIVEAI).
+For issues, bugs, or suggestions, feel free to open an issue or contribute via a pull request on the [GitHub repository](https://github.com/hiveagent/hiveagentai).
 
 Let's create smarter AI together! 🤖💡✨
-```
