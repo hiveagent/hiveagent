@@ -1,7 +1,6 @@
 # HIVEAI 🐝 - Multi-Agent Collaboration Platform
 
-[![PyPI version](https://badge.fury.io/py/hiveai.svg)](https://pypi.org/project/hiveai/)
-[![Discord](https://img.shields.io/discord/123456789012345678?label=chat%20on%20Discord&logo=discord&logoColor=white)](https://discord.com/invite/E8Y5rbCC)
+[![PyPI version](https://badge.fury.io/py/hiveagentai.svg)](https://pypi.org/project/hiveagentai/)
 [![GitHub stars](https://img.shields.io/github/stars/hiveagent/hiveagentai.svg?style=social)](https://github.com/hiveagent/hiveagentai/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
