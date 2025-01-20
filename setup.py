@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="hiveagentai",
-    version="0.0.2",
+    version="0.1.0",
     author="HiveagentAI Dev",
     author_email="dev@hiveagentai.com",
     description="The ultimate platform for orchestrating intelligent teamwork.",
