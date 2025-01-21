@@ -3,12 +3,12 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-
 def create_app():
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hiveai.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+    app.config['ENV'] = 'production'
+    app.config['DEBUG'] = False
     db.init_app(app)
 
     # Models
@@ -49,6 +49,9 @@ def create_app():
     with app.app_context():
         db.create_all()
 
+    # ---------------------------
+    # ALL Endpoints
+    # ---------------------------
     @app.route('/agents', methods=['POST'])
     def create_agent():
         data = request.get_json() or {}
@@ -164,9 +167,80 @@ def create_app():
             "agents_progress": agents_info
         }), 200
 
+    @app.route('/multi-agent', methods=['GET'])
+    def get_all_collaborations():
+        """
+        GET /multi-agent
+        Returns a list of all collaborations.
+        """
+        app.logger.info("GET_ALL_COLLABORATIONS ENDPOINT: Listing all collaborations.")
+        collaborations = Collaboration.query.all()
+        collaborations_data = [
+            {
+                "id": c.id,
+                "name": c.name,
+                "description": c.description,
+                "agent_count": len(c.agents)
+            }
+            for c in collaborations
+        ]
+        app.logger.info(f"GET_ALL_COLLABORATIONS ENDPOINT: Found {len(collaborations_data)} collaborations.")
+        return jsonify(collaborations_data), 200
+
+    @app.route('/multi-agent/<int:collaboration_id>', methods=['PUT'])
+    def update_collaboration(collaboration_id):
+        """
+        PUT /multi-agent/<collaboration_id>
+        Updates the name or description of an existing collaboration.
+        """
+        app.logger.info(f"UPDATE_COLLABORATION ENDPOINT: Collaboration ID={collaboration_id}")
+        collaboration = Collaboration.query.get_or_404(collaboration_id)
+
+        data = request.get_json() or {}
+        updated_name = data.get('name')
+        updated_description = data.get('description')
+
+        if not updated_name and not updated_description:
+            app.logger.warning("UPDATE_COLLABORATION ENDPOINT: No update data provided.")
+            return jsonify({"error": "No data provided for update."}), 400
+
+        if updated_name:
+            app.logger.info(f"UPDATE_COLLABORATION ENDPOINT: Updating name to '{updated_name}'.")
+            collaboration.name = updated_name
+        if updated_description:
+            app.logger.info(f"UPDATE_COLLABORATION ENDPOINT: Updating description to '{updated_description}'.")
+            collaboration.description = updated_description
+
+        db.session.commit()
+        app.logger.info(
+            f"UPDATE_COLLABORATION ENDPOINT: Updated Collaboration ID={collaboration.id}. "
+            f"Name='{collaboration.name}', Description='{collaboration.description}'"
+        )
+
+        return jsonify({
+            "id": collaboration.id,
+            "name": collaboration.name,
+            "description": collaboration.description
+        }), 200
+
+    @app.route('/multi-agent/<int:collaboration_id>', methods=['DELETE'])
+    def delete_collaboration(collaboration_id):
+        """
+        DELETE /multi-agent/<collaboration_id>
+        Deletes an existing collaboration by its ID.
+        """
+        app.logger.info(f"DELETE_COLLABORATION ENDPOINT: Collaboration ID={collaboration_id}")
+        collaboration = Collaboration.query.get_or_404(collaboration_id)
+
+        db.session.delete(collaboration)
+        db.session.commit()
+
+        app.logger.info(f"DELETE_COLLABORATION ENDPOINT: Deleted Collaboration ID={collaboration_id}")
+        return jsonify({"message": f"Collaboration {collaboration_id} has been deleted."}), 200
+
     return app
 
 
 if __name__ == '__main__':
     flask_app = create_app()
-    flask_app.run(debug=True)
+    flask_app.run(debug=False)
